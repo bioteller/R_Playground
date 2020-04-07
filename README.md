@@ -5,4 +5,4 @@ R training
 * 演示中_github：https://github.com/bioteller/R_Playground
 * 参考材料_简书：https://www.jianshu.com/p/974430e9a662
 
-Format:![参考材料](Picture1.png "icon")
+Format:![参考材料](Picture1.png)
