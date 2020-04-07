@@ -1,4 +1,5 @@
 # ls -d * > PJ_name.txt
+# 作业脚本可以 email到 lixiaobo@novogene.com
 # PJ_name.txt
 #
 # 1      C202SC18101777.RRA.PE150.20190923.P202SC18101777-01-F001
