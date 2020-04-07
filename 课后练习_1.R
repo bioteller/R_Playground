@@ -1,4 +1,9 @@
-# ls -d * > PJ_name.txt
+# 获得自己手动执行目录到信息
+# 如美国集群 /HWPROJ2/GB/GB_PAG/PJ_GB/seq/manul/1000/$USER 
+# ls -d /HWPROJ2/GB/GB_PAG/PJ_GB/seq/manul/1000/$USER > PJ_name.txt
+# 然后获得PJ_name.txt
+# 读入R继续操作
+#
 # 作业脚本可以 email到 lixiaobo@novogene.com
 # PJ_name.txt
 #
