@@ -79,8 +79,10 @@ if(i == 1){
 
 if(i == 1){
   print("Hello World!") 
-}else{
+}else if(i == 2){
   print("Goodbye World!") 
+}else{ 
+  print("don't know")
 }
 
 
