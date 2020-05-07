@@ -34,12 +34,15 @@ wget https://github.com/bioteller/R_Playground/raw/master/BlackFriday/RT4_CKDL20
 FYI: might need melt() function to change the wide- to long-format matrix, and then use ggplot2 for ploting.
 ```R
 head(original)
-##     N   A   T   C   G   pos
-## 1   9   0   3   7   4   1
-## 2   0   7   6   9   2   2
+##        N       A       C       T       G pos
+## 1 0.00044 0.21212 0.26264 0.05120 0.47360   1
+## 2 0.00000 0.18766 0.28970 0.32026 0.20238   2
+## 3 0.00000 0.19334 0.32042 0.27598 0.21026   3
+## 4 0.00000 0.14242 0.38242 0.32514 0.15002   4
+## 5 0.00000 0.33694 0.17736 0.30862 0.17708   5
 ## ...
-## 149  0   8   4   7   4   149
-## 150  0   5   9   6   3   150
+## 149 0e+00 0.21234 0.20236 0.30840 0.27690 149
+## 150 0e+00 0.21130 0.19410 0.32916 0.26544 150
 
 df <- melt(original,id.vars=c("pos"))
 head(df)
