@@ -1,0 +1,99 @@
+---
+title: "Report"
+author: "LI, Xiaobo; LI Guoli"
+date: "4/27/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+setwd("~/Nutstore Files/.symlinks/Nutstore/Novogene/training/R")
+library(data.table)
+library(Rsamtools)
+library(ggplot2)
+library(gridExtra)
+```
+
+## Introduction
+
+Recently, with the development of high-throughput sequencing technology, the third generation sequencing platforms have become new tools of genome research. The main disadvantages of the second generation sequencing technology are, reads are too short and may match with many different regions of the genome and are not unique to any specifc region of the sequence. However, the third generation sequencing technology, represented by PacBio, has effectively solved this problem. They describe their platform as single molecule real-time sequencing (SMRT), based on the properties of zero-mode waveguides, to construct longer fragments and produce longer reads. Based on the PacBio RSII platform released in 2013, the Pacific Biosciences of California, Inc.（Pacific Biosciences： http://www.pacb.com） launched a new sequencing instrument called the PacBio Sequel system in 2015 with greater capacity, longer reads, lower cost and smaller footprint.
+
+The distribution of Subreads length is shown in figure 2.1：
+```{r cars, echo=FALSE, message=FALSE}
+fread("result.sam") -> filesam
+GC <- function(x){
+  #x:actgcgtgcaagcgt
+  gc <- nchar(gsub("[ATat]","",x))
+  pgc <- floor(10000 * gc / nchar(x))/100
+  return(pgc)
+}
+
+pgc1 <- unlist(lapply(filesam$V10,FUN = GC))
+
+pbqc <- data.frame(row.names =filesam$V1,PGC=pgc1,length=nchar(filesam$V10))
+top <- ggplot(pbqc,aes(x=PGC)) + 
+  geom_histogram(fill="red",) + 
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank())
+right <- ggplot(pbqc,aes(x=length)) + 
+  geom_histogram(fill="red",) +
+  coord_flip() + 
+  theme(axis.title.x  = element_blank(),
+        axis.text.x = element_blank())
+empty <- ggplot()+geom_point(aes(1,1), colour="white")+
+  theme(axis.ticks=element_blank(), 
+        panel.background=element_blank(), 
+        axis.text.x=element_blank(), axis.text.y=element_blank(),           
+        axis.title.x=element_blank(), axis.title.y=element_blank())
+m <- data.frame(value=quantile(pbqc$length),id = c("0%","25%","50%","75%","100%"))
+m$label <- paste(m$id,":",m$value,"bp",sep = "")
+scater <-  ggplot(pbqc,aes(x=PGC,y=length)) +
+  geom_point(fill=alpha('red',0.2),color=alpha('red',0),pch=21) +
+  theme(axis.title = element_blank(),axis.text = element_blank()) + 
+  geom_hline(yintercept = m$value,color="gray") + 
+  geom_text(data=m,mapping = aes(x=2,y=value,label=label),hjust=0,vjust=-0.1)
+
+
+GC_dis <- grid.arrange(top, empty, scater, right, ncol=2, nrow=2, widths=c(4, 1), heights=c(1, 4))
+# plot(GC_dis)
+cat("Figure 2.1")
+```
+### plotly
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# plotly::ggplotly(scater)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE, message=FALSE, warning=FALSE}
+qclen <- pbqc$length
+qclen <- sort(qclen,decreasing = T)[1:40]
+label <-pbqc[which(pbqc$length %in% qclen[1:40]),]
+label <- label[order(label$length,decreasing = T),]
+label$angle <- 90 - 360 * (c(1:nrow(label))-0.5) /nrow(label)
+ 
+write.csv(label,"test22.csv",quote = F)
+ 
+ggplot(data.frame(),aes(x=c(1:length(qclen)),y=qclen)) + 
+  geom_bar(stat = "identity",fill=rainbow(length(qclen))) +
+  coord_polar() + 
+  ylim(c(-20000,qclen[1]*1.1))+
+  ggtitle("Reads Length distribution (bases)")+
+    theme(panel.background = element_blank(),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),axis.ticks = element_blank()) +
+  geom_text(data = label,
+            mapping = aes(x=c(1:nrow(label)),
+                          y=length+15,
+                          label=length,
+                          angle=angle),
+            size=3)
+
+
+DT::datatable(data=label[,c(2,1)],)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
