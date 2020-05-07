@@ -18,6 +18,8 @@ wget https://github.com/bioteller/R_Playground/blob/master/BlackFriday/exam.csv
 5. (optional) Add a horizon line in gray showing p.adj = 0.05
 6. (optional) Encapsulation if possible.
 
+--------
+
 Task.2 Generate a GC distribution map. (difficulty:*** ;40%)
 ![Figure.2](https://github.com/bioteller/R_Playground/blob/master/BlackFriday/Fig2.png)
 1. Read the data into R from github repo.
@@ -29,3 +31,26 @@ wget https://github.com/bioteller/R_Playground/raw/master/BlackFriday/RT4_CKDL20
 3. Title the graph as "Figure.2 GC distribution"
 4. (optional) Encapsulation if possible.
 
+FYI: might need melt() function to change the wide- to long-format matrix, and then use ggplot2 for ploting.
+```R
+head(original)
+##     N   A   T   C   G   pos
+## 1   9   0   3   7   4   1
+## 2   0   7   6   9   2   2
+## ...
+## 149  0   8   4   7   4   149
+## 150  0   5   9   6   3   150
+
+df <- melt(original,id.vars=c("pos"))
+head(df)
+##  pos variable   value
+## 1   1        N 0.00044
+## 2   2        N 0.00000
+## 3   3        N 0.00000
+## ...
+## 150 150      G 0.24000
+## 150 150      T 0.36000
+
+ggplot(df,aes(x=pos,y=value,group=variable,color=variable)) 
+  + geom_line()
+```
