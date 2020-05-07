@@ -1,4 +1,4 @@
-## 周五R检测的内容：
+# 周五R检测的内容：
 
 > 我们经过了四周的分享，吧R的整理数据，基础画图，ggplot2 画图以及从分析数据到报告的过程进行了了解。我们现在已经基本可以用到课堂内容进行数据矩阵的整理最后画出能用于文字发表的图
 
@@ -6,7 +6,7 @@
 我将从结果顺利展示[30%]，代码顺利运行[30%]，执行效率[15%],和代码规范[25%]四个方面进行评价。
 
 --------
-Task.1 Generate a volcano graph for DEG data. (difficulty:* ;60%)
+### Task.1 Generate a volcano graph for DEG data. (difficulty:* ;60%)
 ![Figure.1](https://github.com/bioteller/R_Playground/blob/master/BlackFriday/Fig1.png)
 1. Read the data into R from github repo. 
 ```sh
@@ -20,7 +20,7 @@ wget https://github.com/bioteller/R_Playground/blob/master/BlackFriday/exam.csv
 
 --------
 
-Task.2 Generate a GC distribution map. (difficulty:*** ;40%)
+### Task.2 Generate a GC distribution map. (difficulty:*** ;40%)
 ![Figure.2](https://github.com/bioteller/R_Playground/blob/master/BlackFriday/Fig2.png)
 1. Read the data into R from github repo.
 ```sh
