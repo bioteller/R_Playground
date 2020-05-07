@@ -22,4 +22,5 @@ Task.2 Generate a GC distribution map. (difficulty:*** ;40%)
 3. Title the graph as "Figure.2 GC distribution"
 4. (optional) Encapsulation if possible.
 
-FYI:
+FYI: download the data file by 
+```wget https://github.com/bioteller/R_Playground/raw/master/BlackFriday/RT4_CKDL200148623-1a_H7HGGCCX2_L5_2.fastq```
