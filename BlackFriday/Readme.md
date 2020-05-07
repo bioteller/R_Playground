@@ -7,6 +7,7 @@
 
 --------
 Task.1 Generate a volcano graph for DEG data. 
+![R语言_1](https://www.jianshu.com/p/974430e9a662)
 1. Read the data into R from github repo.
 2. Please draw a scatter graph (log2FoldChange vs -log(p.adj)) by R base-tools or ggplot2. (need collate and compute in advance)
 3. Color the dots in red, green for up- or down-regulated genes whose p.adj < 0.05, while gray for rest.
