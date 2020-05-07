@@ -12,5 +12,6 @@ Task.1 Generate a volcano graph for DEG data.
 3. Color the dots in red, green for up- or down-regulated genes whose p.adj < 0.05, while gray for rest.
 4. Title the graph as "Figure.1 Volcano Graph"
 5. (optional) Add a horizon line in gray showing p.adj = 0.05
+6. (optional) Encapsulation if possible.
 
 Task.2
