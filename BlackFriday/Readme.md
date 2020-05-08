@@ -10,7 +10,7 @@
 ![Figure.1](https://github.com/bioteller/R_Playground/blob/master/BlackFriday/Fig1.png)
 1. Read the data into R from github repo. 
 ```sh
-wget https://github.com/bioteller/R_Playground/blob/master/BlackFriday/exam.csv
+ask xiaobo for datapath
 ```
 2. Please draw a scatter graph (log2FoldChange vs -log(p.adj)) by R base-tools or ggplot2. (need collate and compute in advance)
 3. Color the dots in red, green for up- or down-regulated genes whose p.adj < 0.05, while gray for rest.
@@ -24,8 +24,7 @@ wget https://github.com/bioteller/R_Playground/blob/master/BlackFriday/exam.csv
 ![Figure.2](https://github.com/bioteller/R_Playground/blob/master/BlackFriday/Fig2.png)
 1. Read the data into R from github repo.
 ```sh
-wget https://github.com/bioteller/R_Playground/raw/master/BlackFriday/RT4_CKDL200148623-1a_H7HGGCCX2_L5_1.fastq
-wget https://github.com/bioteller/R_Playground/raw/master/BlackFriday/RT4_CKDL200148623-1a_H7HGGCCX2_L5_2.fastq
+ask xiaobo for datapath
 ```
 2. Please draw a line chart (x=pos,y=base%) by R base-tools or ggplot2. (need collate and compute in advance)
 3. Title the graph as "Figure.2 GC distribution"
